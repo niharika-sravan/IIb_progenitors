@@ -2,7 +2,7 @@
 
 co-author: [Pablo Marchant](https://github.com/orlox) 
 
-`svn export https://github.com/niharika87/IIb_progenitors <local path>` to download everything
+`svn export https://github.com/niharika-sravan/IIb_progenitors <local path>` to download everything
 
 Note: 
 1. These files were written for MESA release 9575
