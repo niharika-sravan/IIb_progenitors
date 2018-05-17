@@ -27,7 +27,6 @@
       use const_def
       use chem_def
       use num_lib
-      use binary_def
       
       implicit none
 
@@ -198,21 +197,20 @@
          integer, intent(in) :: id, id_extra
          integer :: ierr
          type (star_info), pointer :: s
-         type (binary_info), pointer :: b
          ierr = 0
          call star_ptr(id, s, ierr)
          if (ierr /= 0) return
          extras_finish_step = keep_going
          call store_extra_info(s)
-         call binary_ptr(s% binary_id, b, ierr)
+         !call binary_ptr(s% binary_id, b, ierr)
          if (ierr /= 0) return
 
-         s% xtra1 = s% xtra1 - b% mtransfer_rate*s% dt/Msun
-         s% xtra2 = s% xtra2 - b% xfer_fraction * b% mtransfer_rate*s% dt/Msun
-         if(s% id == 1) then
-            write(*,*) "mass transferred", s% xtra1
-            write(*,*) "mass accreted", s% xtra2
-         end if
+         !s% xtra1 = s% xtra1 - b% mtransfer_rate*s% dt/Msun
+         !s% xtra2 = s% xtra2 - b% xfer_fraction * b% mtransfer_rate*s% dt/Msun
+         !if(s% id == 1) then
+         !   write(*,*) "mass transferred", s% xtra1
+         !   write(*,*) "mass accreted", s% xtra2
+         !end if
 
          if(abs(s% xtra25_old - s% center_h1) > 0.0025) then
              s% dt_next = min(s% dt_next, s% dt * s% min_timestep_factor)
